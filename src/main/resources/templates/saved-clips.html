@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LATEST CLIPS</title>
+</head>
+<body>
+<h1>Saved Clips</h1>
+<div>
+    <ul>
+        <th:block th:each="clip : ${clips}">
+            <li>
+                <h3>Clip saved at: <span th:text="${clip.date}"></span></h3>
+                <pre th:text="${clip.content}"></pre>
+                <span th:each="tag : ${clip.tags}" th:text="${tag}"></span>
+                <form action="/delete-clip/{id}" method="post">
+                    <button type="submit">Delete Clip</button>
+                </form>
+            </li>
+        </th:block>
+    </ul>
+</div>
+<a href="/">Back to Home</a>
+</body>
+</html>
